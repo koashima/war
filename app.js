@@ -1,17 +1,17 @@
-/*----- constants -----*/
+console.log("hello");
+
 class Deck { 
     constructor(){
         this.deck = [];
 
-        const suits = ['spades', 'hearts', 'diamonds', 'clubs' ];
-        const values = [0, 1, 2, 3];
+        const suits = ['spades', 'hearts', 'diamonds', 'clubs'];
+        const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
         for(let suit in suits) { 
             for(let value in values) { 
-                this.deck.push({0: `${suits[suit]}${values[value]}`,
-                                img: `assets/${suits[suit]}${values[value]}.jpg`});
+                this.deck.push(`${suits[suit]}${values[value]}`);
             }
-        }
+        }   
     }
     shuffle() {
         const deck = this.deck;
@@ -26,5 +26,26 @@ class Deck {
     }
 
 }
+let deck
+let p1Deck
+let dDeck
 
-const deck = new Deck;
+let cCard = document.querySelector('#cf');
+let dCard = document.querySelector('#df')
+
+function init(){
+    shuffleSplit();
+}
+
+
+
+
+
+
+
+function shuffleSplit(){
+    let deck = new Deck;
+    sDeck = deck.shuffle();
+    let p1Deck = sDeck.splice(0,26);
+    let dDeck = sDeck;
+}

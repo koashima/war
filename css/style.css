@@ -17,6 +17,7 @@ body {
 
 header{
     grid-area: header;
+    justify-content: center;
 }
 div { 
     border: 1px solid black;
@@ -36,5 +37,7 @@ div {
 
 #challenger { 
     grid-area: challenger;
+    display: flex;
+    justify-content: end;
 }
 
