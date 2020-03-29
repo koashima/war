@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    grid-template-columns: 1fr 1fr;
+    grid-row: auto;
+    grid-template-areas:
+    "header header"
+    ". dealer"
+    " cf  df"
+    "challenger .";
+}
+
+header{
+    grid-area: header;
+}
+div { 
+    border: 1px solid black;
+}
+
+#dealer {
+    grid-area: dealer;
+}
+
+#df {
+    grid-area: df;
+}
+
+#cf {
+    grid-area: cf;
+}
+
+#challenger { 
+    grid-area: challenger;
+}
+
