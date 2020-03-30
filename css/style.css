@@ -46,3 +46,9 @@ header {
     justify-content: flex-end;
 }
 
+button { 
+    background-color: transparent;
+    flex-grow: 12;
+    font-size: 2rem;
+
+}

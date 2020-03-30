@@ -7,7 +7,9 @@ class Deck {
         for(let suit in suits) { 
             for(let value in values) { 
                 this.deck.push({0: `${suits[suit]}`,
-                                1:  values[value],});
+                                1:  values[value],
+                                2:  `${suits[suit]}${values[value]}`})
+
                                 // 2: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`
             }
         }   
@@ -30,7 +32,7 @@ let deck, sDeck, p1Deck, dDeck;
 
 let pile = [];
 
-
+let message = document.querySelector('#message');
 let cCard = document.querySelector('#c-field');
 let dCard = document.querySelector('#d-field');
 let chalClickDeck = document.querySelector('#challenger');
@@ -58,12 +60,9 @@ function goToWar(){
     dDeck.shift();
 
     if(pile[0].value > pile[1].value){
-        
+
     }
 }
-
-goToWar();
-
 
 // for(let value in values) { 
 //     this.deck.push({0: `${suits[suit]}${values[value]}`,
