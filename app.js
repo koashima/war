@@ -8,7 +8,7 @@ class Deck {
             for(let value in values) { 
                 this.deck.push({0: `${suits[suit]}`,
                                 1:  values[value],
-                                2:  `${suits[suit]}${values[value]}`})
+                                2: `${suits[suit]}${values[value]}`})
 
                                 // 2: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`
             }
@@ -33,12 +33,9 @@ let deck, sDeck, p1Deck, dDeck;
 let pile = [];
 
 let message = document.querySelector('#message');
-let cCard = document.querySelector('#c-field');
-let dCard = document.querySelector('#d-field');
 let chalClickDeck = document.querySelector('#challenger');
-
+let chalCard = document.querySelector('#deal-card');
 chalClickDeck.addEventListener('click', goToWar);
-
 
 createShuffleSplit();
 
@@ -56,13 +53,14 @@ function createShuffleSplit(){
 function goToWar(){
     pile.push(p1Deck[0]);
     pile.push(dDeck[0]);
+    chalCard.classList.add(`${pile[0][2]}`)
     p1Deck.shift();
     dDeck.shift();
-
-    if(pile[0].value > pile[1].value){
-
+    
+    if(pile[0][1] > pile[1][1]){
     }
 }
+
 
 // for(let value in values) { 
 //     this.deck.push({0: `${suits[suit]}${values[value]}`,
