@@ -1,15 +1,14 @@
-console.log("hello");
-
 class Deck { 
     constructor(){
         this.deck = [];
 
-        const suits = ['spades', 'hearts', 'diamonds', 'clubs'];
+        const suits = ['s', 'h', 'd', 'c'];
         const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
         for(let suit in suits) { 
             for(let value in values) { 
-                this.deck.push(`${suits[suit]}${values[value]}`);
+                this.deck.push({0: `${suits[suit]}`,
+                                1:  values[value],});
+                                // 2: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`
             }
         }   
     }
@@ -26,26 +25,47 @@ class Deck {
     }
 
 }
-let deck
-let p1Deck
-let dDeck
 
-let cCard = document.querySelector('#cf');
-let dCard = document.querySelector('#df')
+let deck, sDeck, p1Deck, dDeck;
 
-function init(){
-    shuffleSplit();
-}
+let pile = [];
 
 
+let cCard = document.querySelector('#c-field');
+let dCard = document.querySelector('#d-field');
+let chalClickDeck = document.querySelector('#challenger');
+
+chalClickDeck.addEventListener('click', goToWar);
 
 
+createShuffleSplit();
 
 
-
-function shuffleSplit(){
-    let deck = new Deck;
+function createShuffleSplit(){
+    deck = new Deck;
+    console.log(deck);
     sDeck = deck.shuffle();
-    let p1Deck = sDeck.splice(0,26);
-    let dDeck = sDeck;
+    p1Deck = sDeck.splice(0,26);
+    dDeck = sDeck;    
 }
+
+
+
+function goToWar(){
+    pile.push(p1Deck[0]);
+    pile.push(dDeck[0]);
+    p1Deck.shift();
+    dDeck.shift();
+
+    if(pile[0].value > pile[1].value){
+        
+    }
+}
+
+goToWar();
+
+
+// for(let value in values) { 
+//     this.deck.push({0: `${suits[suit]}${values[value]}`,
+//                     1: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`});
+// }

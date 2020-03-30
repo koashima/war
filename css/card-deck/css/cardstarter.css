@@ -44,22 +44,22 @@
 .card.diamonds.A,
 .card.dA,
 .card.♦A {
-  background-image: url("../images/diamonds/diamonds-A.svg"); }
+  background-image: url("../images/diamonds/diamonds-14.svg"); }
 
 .card.diamonds.K,
 .card.dK,
 .card.♦K {
-  background-image: url("../images/diamonds/diamonds-K.svg"); }
+  background-image: url("../images/diamonds/diamonds-13.svg"); }
 
 .card.diamonds.Q,
 .card.dQ,
 .card.♦Q {
-  background-image: url("../images/diamonds/diamonds-Q.svg"); }
+  background-image: url("../images/diamonds/diamonds-12.svg"); }
 
 .card.diamonds.J,
 .card.dJ,
 .card.♦J {
-  background-image: url("../images/diamonds/diamonds-J.svg"); }
+  background-image: url("../images/diamonds/diamonds-11.svg"); }
 
 .card.diamonds.r10,
 .card.d10,
@@ -67,7 +67,7 @@
   background-image: url("../images/diamonds/diamonds-r10.svg"); }
 
 .card.diamonds.r09,
-.card.d09,
+.card.d9,
 .card.♦09 {
   background-image: url("../images/diamonds/diamonds-r09.svg"); }
 
