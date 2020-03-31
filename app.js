@@ -28,14 +28,18 @@ class Deck {
 
 }
 
-let deck, sDeck, p1Deck, dDeck;
+let deck, sDeck, p1Deck, dDeck, chalRemove, dealRemove;
 
 let pile = [];
+let winnings = [];
 
 let message = document.querySelector('#message');
 let chalClickDeck = document.querySelector('#challenger');
-let chalCard = document.querySelector('#deal-card');
-chalClickDeck.addEventListener('click', goToWar);
+let chalCard = document.querySelector('#chal-card');
+let dealCard = document.querySelector('#deal-card');
+
+
+chalClickDeck.addEventListener('click', flip);
 
 createShuffleSplit();
 
@@ -50,17 +54,58 @@ function createShuffleSplit(){
 
 
 
-function goToWar(){
+function flip(){
+    // adds both players card to the pile
     pile.push(p1Deck[0]);
     pile.push(dDeck[0]);
-    chalCard.classList.add(`${pile[0][2]}`)
+    
+    let chalRemove = chalCard.classList[3];
+    let dealRemove = dealCard.classList[3];
+
+    chalCard.classList.add(`${pile[0][2]}`);
+    dealCard.classList.add(`${pile[1][2]}`);
+    // removes the cards that were added to the pile
     p1Deck.shift();
     dDeck.shift();
-    
-    if(pile[0][1] > pile[1][1]){
+    winnings = pile.splice(0,2)
+    let remChCard = winnings[0][2];
+    let remDeCard = winnings[1][2];
+    // if challenger has greater value card
+    if(winnings[0][1] > winnings[1][1]){
+        p1Deck.push(winnings[0]);
+        p1Deck.push(winnings[1]);
+    // if dealer has greater value card
+    }else if(winnings[0][1] < winnings[1][1]){
+        dDeck.push(winnings[0]);
+        dDeck.push(winnings[1]);
+    // if it is a tie
+    }else if(winnings[0][1] === winnings[1][1]){
+        goToWar();
     }
+    chalCard.classList.remove(chalRemove);
+    dealCard.classList.remove(dealRemove);
 }
 
+
+
+function goToWar(){
+
+}
+
+
+
+function render(winner){
+    message.innerHTML = `${winner} won this flip`
+}
+
+
+
+
+//     function renderBlankCard(){
+//         chalCard.classList.remove(`${pile[0][2]}`);
+//         dealCard.classList.remove(`${pile[1][2]}`);
+//     }
+// }
 
 // for(let value in values) { 
 //     this.deck.push({0: `${suits[suit]}${values[value]}`,
