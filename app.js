@@ -74,10 +74,12 @@ function flip(){
     if(winnings[0][1] > winnings[1][1]){
         p1Deck.push(winnings[0]);
         p1Deck.push(winnings[1]);
+        renderWinner('challenger');
     // if dealer has greater value card
     }else if(winnings[0][1] < winnings[1][1]){
         dDeck.push(winnings[0]);
         dDeck.push(winnings[1]);
+        renderWinner('dealer');
     // if it is a tie
     }else if(winnings[0][1] === winnings[1][1]){
         goToWar();
@@ -94,8 +96,8 @@ function goToWar(){
 
 
 
-function render(winner){
-    message.innerHTML = `${winner} won this flip`
+function renderWinner(winner){
+    message.innerHTML = `${winner} won this flip`;
 }
 
 

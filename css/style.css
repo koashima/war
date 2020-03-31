@@ -42,8 +42,50 @@ header {
 
 #c-container { 
     grid-area: c-container;
-    display: flex;
-    justify-content: flex-end;
+    margin: 0;;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"name  challenger"
+                        "score challenger";
+    justify-content: end
+}
+
+#c-name { 
+    grid-area: name;
+    justify-self: end;
+}
+
+#chal-score { 
+    grid-area: score;
+    justify-self: end;
+}
+
+#challenger { 
+    grid-area: challenger;
+    justify-self: end;
+
+}
+
+#d-container { 
+    grid-area: d-container;
+    margin: 0;;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"dealer  name"
+                        "dealer score";
+    justify-content: end
+}
+
+#d-name { 
+    grid-area: name;
+}
+
+#d-score { 
+    grid-area: score;
+}
+
+#dealer { 
+    grid-area: dealer;
 }
 
 button { 
