@@ -9,8 +9,6 @@ class Deck {
                 this.deck.push({0: `${suits[suit]}`,
                                 1:  values[value],
                                 2: `${suits[suit]}${values[value]}`})
-
-                                // 2: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`
             }
         }   
     }
@@ -25,62 +23,64 @@ class Deck {
         }
         return deck;
     }
-
 }
 
-let deck, sDeck, p1Deck, dDeck, chalRemove, dealRemove;
+let deck, sDeck, cDeck, dDeck, chalRemove, dealRemove;
 
 let pile = [];
 let winnings = [];
 
 let message = document.querySelector('#message');
+let chalDeck = document.querySelector('#chal-deck');
+let dealDeck = document.querySelector('#deal-deck');
 let chalClickDeck = document.querySelector('#challenger');
+
 let chalCard = document.querySelector('#chal-card');
 let dealCard = document.querySelector('#deal-card');
 
+let resetBtn = document.querySelector('#resetbb');
 
+resetBtn.addEventListener('click', () => location.reload())
 chalClickDeck.addEventListener('click', flip);
+
 
 createShuffleSplit();
 
-
 function createShuffleSplit(){
     deck = new Deck;
-    console.log(deck);
     sDeck = deck.shuffle();
-    p1Deck = sDeck.splice(0,26);
+    cDeck = sDeck.splice(0,26);
     dDeck = sDeck;    
 }
 
-
-
 function flip(){
-    // adds both players card to the pile
-    pile.push(p1Deck[0]);
+    pile.push(cDeck[0]);
     pile.push(dDeck[0]);
-    
+    console.log(cDeck)
+    console.log(pile)
     let chalRemove = chalCard.classList[3];
     let dealRemove = dealCard.classList[3];
 
     chalCard.classList.add(`${pile[0][2]}`);
     dealCard.classList.add(`${pile[1][2]}`);
-    // removes the cards that were added to the pile
-    p1Deck.shift();
+
+    cDeck.shift();
     dDeck.shift();
-    winnings = pile.splice(0,2)
-    let remChCard = winnings[0][2];
-    let remDeCard = winnings[1][2];
-    // if challenger has greater value card
+    winnings = pile.splice(0, pile.length);
     if(winnings[0][1] > winnings[1][1]){
-        p1Deck.push(winnings[0]);
-        p1Deck.push(winnings[1]);
+        // cDeck.push(winnings);
+        winnings.forEach((win) => cDeck.push(win))
         renderWinner('challenger');
-    // if dealer has greater value card
+        chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
+        dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
+        endGame()
     }else if(winnings[0][1] < winnings[1][1]){
-        dDeck.push(winnings[0]);
-        dDeck.push(winnings[1]);
+        // dDeck.push(winnings);
+        winnings.forEach((win) => dDeck.push(win))
         renderWinner('dealer');
-    // if it is a tie
+        chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
+        dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
+        endGame();
     }else if(winnings[0][1] === winnings[1][1]){
         goToWar();
     }
@@ -89,27 +89,25 @@ function flip(){
 }
 
 
-
+    
 function goToWar(){
-
+    pile.unshift(cDeck[0]);
+    pile.unshift(dDeck[0]);
+    pile.unshift(cDeck[1]);
+    pile.unshift(dDeck[1]);
+    cDeck.shift()
+    dDeck.shift()
+    cDeck.shift()
+    dDeck.shift()
 }
-
-
-
 function renderWinner(winner){
     message.innerHTML = `${winner} won this flip`;
 }
 
-
-
-
-//     function renderBlankCard(){
-//         chalCard.classList.remove(`${pile[0][2]}`);
-//         dealCard.classList.remove(`${pile[1][2]}`);
-//     }
-// }
-
-// for(let value in values) { 
-//     this.deck.push({0: `${suits[suit]}${values[value]}`,
-//                     1: `css/card-deck/images/${suits[suit]}/${suits[suit]}-${values[value]}.svg`});
-// }
+function endGame(){
+    if(cDeck.length === 52){
+        message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!'
+    }else if(dDeck.length === 52){
+        message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!'
+    }
+}
