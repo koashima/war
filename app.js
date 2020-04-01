@@ -54,10 +54,9 @@ function createShuffleSplit(){
 }
 
 function flip(){
-    pile.push(cDeck[0]);
-    pile.push(dDeck[0]);
-    console.log(cDeck)
-    console.log(pile)
+    message.style.color = 'black';
+    pile.unshift(cDeck[0]);
+    pile.unshift(dDeck[0]);
     let chalRemove = chalCard.classList[3];
     let dealRemove = dealCard.classList[3];
 
@@ -82,6 +81,8 @@ function flip(){
         dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
         endGame();
     }else if(winnings[0][1] === winnings[1][1]){
+        message.style.color = 'red';
+        message.innerHTML = '...What is it good for? WAR!'
         goToWar();
     }
     chalCard.classList.remove(chalRemove);
@@ -91,15 +92,17 @@ function flip(){
 
     
 function goToWar(){
+    pile = winnings;
     pile.unshift(cDeck[0]);
     pile.unshift(dDeck[0]);
     pile.unshift(cDeck[1]);
     pile.unshift(dDeck[1]);
-    cDeck.shift()
-    dDeck.shift()
-    cDeck.shift()
-    dDeck.shift()
+    cDeck.shift();
+    dDeck.shift();
+    cDeck.shift();
+    dDeck.shift();
 }
+
 function renderWinner(winner){
     message.innerHTML = `${winner} won this flip`;
 }
