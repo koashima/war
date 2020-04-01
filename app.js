@@ -108,9 +108,9 @@ function renderWinner(winner){
 }
 
 function endGame(){
-    if(cDeck.length === 52){
+    if(cDeck.length === 50){
         message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!'
-    }else if(dDeck.length === 52){
+    }else if(dDeck.length === 50){
         message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!'
     }
 }
