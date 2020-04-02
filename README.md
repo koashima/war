@@ -10,16 +10,15 @@ If it's a tie... Settle it with rational debate???
 <br>
 NO WAY! 
 <br>
-Just put three more cards down and whoever has the hightest card takes it all! 
+Just put three more cards down and whoever has the highest card takes it all! 
 <br>
-The first player who has no cards left loses. (In this web app, if a player only has 2 cards left they lose.)
+The first player who has no cards left loses. (There is mercy in this web app, if a player only has 2 cards left they lose.)
 
 ## Technologies
 
 - HTML 
-- CSS (CSS Grid)
+- CSS (Grid & Flex)
 - Javascript
-
 <br>
 
 ## Getting Started
@@ -32,5 +31,11 @@ Click the CHALLENGER deck to start your war with the DEALER
 
 Additional styling including:
 
--  robust responsive design
+-  Robust responsive design
+- Fix for rendering Challenger card
+-  Overlays for beginning and end of game.
 -  Animated card flips
+
+Additional Game Mechanics:
+
+- Add to be able to play until player has no cards remaining.
