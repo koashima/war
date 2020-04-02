@@ -110,6 +110,5 @@ function endGame(){
     }else if(dDeck.length >= 50){
         message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!'
         chalClickDeck.removeEventListener('click', flip);
-
     }
 }
