@@ -12,7 +12,7 @@ body {
     grid-template-areas:
     "header header"
     ". d-container"
-    "cf  d-field"
+    "c-field  d-field"
     "c-container .";
 }
 
@@ -34,15 +34,20 @@ header {
 
 }
 
+button { 
+    background-color: transparent;
+    flex-grow: 10;
+    font-size: 2rem;
+}
+
+
 #c-field {
-    grid-area: cf;
+    grid-area: c-field;
     display: flex;
     justify-content: flex-end;
-
 }
 
 #message { 
-    flex-grow: 10;
     justify-items: flex-end;
 }
 
@@ -96,8 +101,3 @@ header {
     grid-area: dealer;
 }
 
-button { 
-    background-color: transparent;
-    flex-grow: 10;
-    font-size: 2rem;
-}
