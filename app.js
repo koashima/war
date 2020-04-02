@@ -53,8 +53,6 @@ function createShuffleSplit() {
   cDeck = sDeck.splice(0, 26);
   dDeck = sDeck;
 }
-console.log(cDeck)
-console.log(dDeck)
 
 function flip() {
   message.style.color = 'whitesmoke';
