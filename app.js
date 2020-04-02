@@ -67,14 +67,13 @@ function flip(){
     dDeck.shift();
     winnings = pile.splice(0, pile.length);
     if(winnings[0][1] > winnings[1][1]){
-        // cDeck.push(winnings);
+
         winnings.forEach((win) => cDeck.push(win))
         renderWinner('challenger');
         chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
         dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
         endGame()
     }else if(winnings[0][1] < winnings[1][1]){
-        // dDeck.push(winnings);
         winnings.forEach((win) => dDeck.push(win))
         renderWinner('dealer');
         chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
@@ -89,8 +88,6 @@ function flip(){
     dealCard.classList.remove(dealRemove);
 }
 
-
-    
 function goToWar(){
     pile = winnings;
     pile.unshift(cDeck[0]);
