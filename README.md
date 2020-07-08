@@ -31,10 +31,10 @@ Click the CHALLENGER deck to start your war with the DEALER
 
 Additional styling including:
 
--  Robust responsive design
+- Robust responsive design
 - Fix for rendering Challenger card
--  Overlays for beginning and end of game.
--  Animated card flips
+- Overlays for beginning and end of game.
+- Animated card flips
 
 Additional Game Mechanics:
 
