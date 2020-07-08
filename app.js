@@ -1,28 +1,30 @@
-class Deck { 
-    constructor(){
-        this.deck = [];
+class Deck {
+  constructor() {
+    this.deck = [];
 
-        const suits = ['s', 'h', 'd', 'c'];
-        const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-        for(let suit in suits) { 
-            for(let value in values) { 
-                this.deck.push({0: `${suits[suit]}`,
-                                1:  values[value],
-                                2: `${suits[suit]}${values[value]}`})
-            }
-        }   
+    const suits = ['s', 'h', 'd', 'c'];
+    const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    for (let suit in suits) {
+      for (let value in values) {
+        this.deck.push({
+          0: `${suits[suit]}`,
+          1: values[value],
+          2: `${suits[suit]}${values[value]}`,
+        });
+      }
     }
-    shuffle() {
-        const deck = this.deck;
-        let m = deck.length;
-        let i;
+  }
+  shuffle() {
+    const deck = this.deck;
+    let m = deck.length;
+    let i;
 
-        while (m) {
-            i = Math.floor(Math.random() * m--);
-            [deck[m], deck[i]] = [deck[i], deck[m]];
-        }
-        return deck;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      [deck[m], deck[i]] = [deck[i], deck[m]];
     }
+    return deck;
+  }
 }
 
 let deck, sDeck, cDeck, dDeck, chalRemove, dealRemove;
@@ -40,75 +42,76 @@ let dealCard = document.querySelector('#deal-card');
 
 let resetBtn = document.querySelector('#resetbb');
 
-resetBtn.addEventListener('click', () => location.reload())
+resetBtn.addEventListener('click', () => location.reload());
 chalClickDeck.addEventListener('click', flip);
-
 
 createShuffleSplit();
 
-function createShuffleSplit(){
-    deck = new Deck;
-    sDeck = deck.shuffle();
-    cDeck = sDeck.splice(0,26);
-    dDeck = sDeck;    
+function createShuffleSplit() {
+  deck = new Deck();
+  sDeck = deck.shuffle();
+  cDeck = sDeck.splice(0, 26);
+  dDeck = sDeck;
+}
+console.log(cDeck)
+console.log(dDeck)
+
+function flip() {
+  message.style.color = 'black';
+  pile.unshift(cDeck[0]);
+  pile.unshift(dDeck[0]);
+  let chalRemove = chalCard.classList[3];
+  let dealRemove = dealCard.classList[3];
+
+  chalCard.classList.add(`${pile[0][2]}`);
+  dealCard.classList.add(`${pile[1][2]}`);
+
+  cDeck.shift();
+  dDeck.shift();
+  winnings = pile.splice(0, pile.length);
+  if (winnings[0][1] > winnings[1][1]) {
+    winnings.forEach((win) => cDeck.push(win));
+    renderWinner('challenger');
+    chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
+    dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
+    endGame();
+  } else if (winnings[0][1] < winnings[1][1]) {
+    winnings.forEach((win) => dDeck.push(win));
+    renderWinner('dealer');
+    chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
+    dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
+    endGame();
+  } else if (winnings[0][1] === winnings[1][1]) {
+    message.style.color = 'red';
+    message.innerHTML = '...What is it good for? WAR!';
+    goToWar();
+  }
+  chalCard.classList.remove(chalRemove);
+  dealCard.classList.remove(dealRemove);
 }
 
-function flip(){
-    message.style.color = 'black';
-    pile.unshift(cDeck[0]);
-    pile.unshift(dDeck[0]);
-    let chalRemove = chalCard.classList[3];
-    let dealRemove = dealCard.classList[3];
-
-    chalCard.classList.add(`${pile[0][2]}`);
-    dealCard.classList.add(`${pile[1][2]}`);
-
-    cDeck.shift();
-    dDeck.shift();
-    winnings = pile.splice(0, pile.length);
-    if(winnings[0][1] > winnings[1][1]){
-        winnings.forEach((win) => cDeck.push(win))
-        renderWinner('challenger');
-        chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
-        dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
-        endGame()
-    }else if(winnings[0][1] < winnings[1][1]){
-        winnings.forEach((win) => dDeck.push(win))
-        renderWinner('dealer');
-        chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
-        dealDeck.innerHTML = `DECK SIZE ${dDeck.length}`;
-        endGame();
-    }else if(winnings[0][1] === winnings[1][1]){
-        message.style.color = 'red';
-        message.innerHTML = '...What is it good for? WAR!'
-        goToWar();
-    }
-    chalCard.classList.remove(chalRemove);
-    dealCard.classList.remove(dealRemove);
+function goToWar() {
+  pile = winnings;
+  pile.unshift(cDeck[0]);
+  pile.unshift(dDeck[0]);
+  pile.unshift(cDeck[1]);
+  pile.unshift(dDeck[1]);
+  cDeck.shift();
+  dDeck.shift();
+  cDeck.shift();
+  dDeck.shift();
 }
 
-function goToWar(){
-    pile = winnings;
-    pile.unshift(cDeck[0]);
-    pile.unshift(dDeck[0]);
-    pile.unshift(cDeck[1]);
-    pile.unshift(dDeck[1]);
-    cDeck.shift();
-    dDeck.shift();
-    cDeck.shift();
-    dDeck.shift();
+function renderWinner(winner) {
+  message.innerHTML = `${winner} won this flip`;
 }
 
-function renderWinner(winner){
-    message.innerHTML = `${winner} won this flip`;
-}
-
-function endGame(){
-    if(cDeck.length >= 50){
-        message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!'
-        chalClickDeck.removeEventListener('click', flip);
-    }else if(dDeck.length >= 50){
-        message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!'
-        chalClickDeck.removeEventListener('click', flip);
-    }
+function endGame() {
+  if (cDeck.length >= 50) {
+    message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!';
+    chalClickDeck.removeEventListener('click', flip);
+  } else if (dDeck.length >= 50) {
+    message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!';
+    chalClickDeck.removeEventListener('click', flip);
+  }
 }
