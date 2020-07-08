@@ -67,10 +67,6 @@ function flip(){
     dDeck.shift();
     winnings = pile.splice(0, pile.length);
     if(winnings[0][1] > winnings[1][1]){
-<<<<<<< HEAD
-
-=======
->>>>>>> master
         winnings.forEach((win) => cDeck.push(win))
         renderWinner('challenger');
         chalDeck.innerHTML = `DECK SIZE ${cDeck.length}`;
