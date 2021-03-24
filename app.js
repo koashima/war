@@ -1,30 +1,28 @@
-class Deck {
-  constructor() {
-    this.deck = [];
+class Deck { 
+    constructor(){
+        this.deck = [];
 
-    const suits = ['s', 'h', 'd', 'c'];
-    const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    for (let suit in suits) {
-      for (let value in values) {
-        this.deck.push({
-          0: `${suits[suit]}`,
-          1: values[value],
-          2: `${suits[suit]}${values[value]}`,
-        });
-      }
+        const suits = ['s', 'h', 'd', 'c'];
+        const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+        for(let suit in suits) { 
+            for(let value in values) { 
+                this.deck.push({0: `${suits[suit]}`,
+                                1:  values[value],
+                                2: `${suits[suit]}${values[value]}`})
+            }
+        }   
     }
-  }
-  shuffle() {
-    const deck = this.deck;
-    let m = deck.length;
-    let i;
+    shuffle() {
+        const deck = this.deck;
+        let m = deck.length;
+        let i;
 
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      [deck[m], deck[i]] = [deck[i], deck[m]];
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+            [deck[m], deck[i]] = [deck[i], deck[m]];
+        }
+        return deck;
     }
-    return deck;
-  }
 }
 
 let deck, sDeck, cDeck, dDeck, chalRemove, dealRemove;
@@ -42,8 +40,9 @@ let dealCard = document.querySelector('#deal-card');
 
 let resetBtn = document.querySelector('#resetbb');
 
-resetBtn.addEventListener('click', () => location.reload());
+resetBtn.addEventListener('click', () => location.reload())
 chalClickDeck.addEventListener('click', flip);
+
 
 createShuffleSplit();
 
@@ -88,28 +87,28 @@ function flip() {
   dealCard.classList.remove(dealRemove);
 }
 
-function goToWar() {
-  pile = winnings;
-  pile.unshift(cDeck[0]);
-  pile.unshift(dDeck[0]);
-  pile.unshift(cDeck[1]);
-  pile.unshift(dDeck[1]);
-  cDeck.shift();
-  dDeck.shift();
-  cDeck.shift();
-  dDeck.shift();
+function goToWar(){
+    pile = winnings;
+    pile.unshift(cDeck[0]);
+    pile.unshift(dDeck[0]);
+    pile.unshift(cDeck[1]);
+    pile.unshift(dDeck[1]);
+    cDeck.shift();
+    dDeck.shift();
+    cDeck.shift();
+    dDeck.shift();
 }
 
-function renderWinner(winner) {
-  message.innerHTML = `${winner} won this flip`;
+function renderWinner(winner){
+    message.innerHTML = `${winner} won this flip`;
 }
 
-function endGame() {
-  if (cDeck.length >= 50) {
-    message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!';
-    chalClickDeck.removeEventListener('click', flip);
-  } else if (dDeck.length >= 50) {
-    message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!';
-    chalClickDeck.removeEventListener('click', flip);
-  }
+function endGame(){
+    if(cDeck.length >= 50){
+        message.innerHTML = 'WINNER! WINNER! CHALLENGER! DINNER!'
+        chalClickDeck.removeEventListener('click', flip);
+    }else if(dDeck.length >= 50){
+        message.innerHTML = 'WINNER! WINNER! DEALER! DINNER!'
+        chalClickDeck.removeEventListener('click', flip);
+    }
 }
