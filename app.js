@@ -57,7 +57,7 @@ console.log(cDeck)
 console.log(dDeck)
 
 function flip() {
-  message.style.color = 'black';
+  message.style.color = 'whitesmoke';
   pile.unshift(cDeck[0]);
   pile.unshift(dDeck[0]);
   let chalRemove = chalCard.classList[3];
@@ -83,7 +83,7 @@ function flip() {
     endGame();
   } else if (winnings[0][1] === winnings[1][1]) {
     message.style.color = 'red';
-    message.innerHTML = '...What is it good for? WAR!';
+    message.innerHTML = '...WHAT IS IT GOOD FOR? WAR!';
     goToWar();
   }
   chalCard.classList.remove(chalRemove);

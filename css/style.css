@@ -6,7 +6,8 @@ body {
     display: grid;
     margin: 0;
     font-family: Helvetica, sans-serif;
-    background-color: rgba(195, 195, 195, 0.9);
+    background-color: #131F67;
+    color: whitesmoke;
     grid-template-columns: 1fr 1fr;
     grid-row: auto;
     grid-template-areas:
@@ -36,8 +37,21 @@ header {
 
 button { 
     background-color: transparent;
+    color: whitesmoke;
     flex-grow: 10;
+    margin: 0;
+    border: 0;    
     font-size: 2rem;
+    max-height: 2rem;
+    text-align: left;
+    align-self: center;
+}
+
+button:hover {
+    justify-self: flex-start;
+    color: red;
+    font-size: 2.2rem;
+    cursor: pointer;
 }
 
 
@@ -48,7 +62,13 @@ button {
 }
 
 #message { 
-    justify-items: flex-end;
+    align-self: center;
+    color: whitesmoke;
+    text-align: center;
+}
+
+#chal-card {
+    min-width: 4em;
 }
 
 #c-container { 
