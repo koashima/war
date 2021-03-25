@@ -1,41 +1,32 @@
-# WAR (WHAT IS IT GOOD FOR?)
+<div align="center"><img src="https://i.imgur.com/fLLnlSu.png
+"></div>
+<h1 align="center">WAR</h1>
+<p align="center"><strong> Academic Project - </strong>
+<br>html / css / javascript
+</p>
+<br/>
+<div align="center"><img src="https://i.imgur.com/zDnLI0J.gif"></img></div>
 
-<img src="https://i.imgur.com/MVwXUDp.png" title="source: imgur.com" />
+<h2>About</h2>
+WAR is a browser-based game of the card game by the same name.
 
-## Background
+WAR is built with HTML, CSS, and Javascript.
 
-War, the card game, is a classic, nonviolent take on war. Each player flips over a card, and whoever has the highest card wins. 
-<br>
-If it's a tie... Settle it with rational debate???
-<br>
-NO WAY! 
-<br>
-Just put three more cards down and whoever has the highest card takes it all! 
-<br>
-The first player who has no cards left loses. (There is mercy in this web app, if a player only has 2 cards left they lose.)
+<h2>Key Learnings</h2>
 
-## Technologies
+- The DOM (handling events, manipulation, etc)
+- Vanilla Javascript
+- CSS Grid and Flex
 
-- HTML 
-- CSS (Grid & Flex)
-- Javascript
-<br>
+<h2>Project Status</h2>
+WAR passed all the academic requirements, but I might still add features like: 
 
-## Getting Started
-[click here to engage in war without any of the repurcussions of real war](https://koashima.github.io/war/)
-
-Click the CHALLENGER deck to start your war with the DEALER
-<br>
-
-## Next Steps
-
-Additional styling including:
-
-- Robust responsive design
-- Fix for rendering Challenger card
 - Overlays for beginning and end of game.
 - Animated card flips
 
-Additional Game Mechanics:
 
-- Add to be able to play until player has no cards remaining.
+## Getting Started
+
+[click here to engage in war without any of the repurcussions of real war](https://koashima.github.io/war/)
+
+Click the CHALLENGER deck to start your war with the DEALER
