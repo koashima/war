@@ -11,7 +11,7 @@
 WAR is a browser-based game of the card game by the same name.
 
 WAR is built with HTML, CSS, and Javascript.
-
+<img src="https://i.imgur.com/fLLnlSu.png">
 <h2>Key Learnings</h2>
 
 - The DOM (handling events, manipulation, etc)
